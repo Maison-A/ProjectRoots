@@ -2,7 +2,7 @@
 
 ## Project Description
 
-This project aims to build a web application using C#, .NET Core, and Vue.js. It showcases CRUD (Create, Read, Update, Delete) operations integrated with a SQL Server database. Perfect for demonstrating skills in both front-end and back-end tech, while gunning for that sweet C# dev role.
+This project aims to build a web application using C#, .NET Core, and Vue.js. It showcases CRUD (Create, Read, Update, Delete) operations integrated with a SQL Server database. Perfect for demonstrating skills in both front-end and back-end tech.
 
 ## Tech Stack
 
@@ -54,3 +54,6 @@ This project aims to build a web application using C#, .NET Core, and Vue.js. It
 - **Error Logging**: Stay in the know when stuff goes south.
 - **Unit Tests**: Trust, but verify.
 - **Docker**: Containerize the whole shebang, if that's your jam.
+
+
+## written by ChatGPT 4.0
