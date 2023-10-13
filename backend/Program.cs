@@ -1,25 +1,43 @@
+using ProjectRoots.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddCors(options => 
+{
+    options.AddDefaultPolicy(builder => 
+        builder.WithOrigins("http://localhost:8080")
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
+
+// Swagger setup.
 builder.Services.AddSwaggerGen();
+
+// Register your DbContext with the Dependency Injection system.
+
+builder.Services.AddDbContext<ProjectRootsDb>(options => 
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Swagger setup.
+app.UseSwagger();
+app.UseSwaggerUI();
+
+// Error handling and development specific settings.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
 }
-
+app.UseCors();
 app.UseHttpsRedirection();
 
+// If you have authentication, it should be set up here. Example:
+// app.UseAuthentication();
+
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
