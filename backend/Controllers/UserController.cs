@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ProjectRoots.Models;
 using System.Collections.Generic;
 namespace backend.Controllers
 
@@ -9,22 +10,19 @@ namespace backend.Controllers
     public class UserController : ControllerBase
     {
         private readonly ILogger<UserController> _logger;
-
-        public UserController(ILogger<UserController> logger)
+        private readonly ProjectRootsDb _context;
+        
+        public UserController(ILogger<UserController> logger, ProjectRootsDb context)
         {
             _logger = logger;
+            _context = context;
         }
 
         [HttpGet("AllUsers")]
-        public IEnumerable<User> Get()
+        [HttpGet("AllUsersDB")]
+        public ActionResult<IEnumerable<User>> GetAllUsers()
         {
-            // mock users for now to check if route works
-            var users = new List<User>
-            {
-                new User { Id = 1, UserName = "LB_Surfer" },
-                new User { Id = 2, UserName = "CaliKid_93" }
-            };
-            return users;
+            return Ok(_context.Users.ToList());
         }
     }
 }
