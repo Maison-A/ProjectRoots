@@ -55,5 +55,4 @@ This project aims to build a web application using C#, .NET Core, and Vue.js. It
 - **Unit Tests**: Trust, but verify.
 - **Docker**: Containerize the whole shebang, if that's your jam.
 
-
 ## Written by ChatGPT 4.0 💚
